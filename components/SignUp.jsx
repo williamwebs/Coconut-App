@@ -228,7 +228,7 @@ const SignUp = ({ onSetComponent }) => {
             Already have an account?
           </p>
           <button onClick={handleSignIn} className="outline_btn">
-            {loading ? "Signing up ..." : "Sign up"}
+            {loading ? "Creating user..." : "Sign up"}
           </button>
         </div>
       </div>

@@ -129,7 +129,7 @@ const SignInComponent = ({ onSetComponent }) => {
           </p>
 
           <button className="outline_btn w-full mt-3">
-            {loading ? "Signing in..." : "Sign in"}
+            {loading ? "Authenticating..." : "Sign in"}
           </button>
         </form>
 
