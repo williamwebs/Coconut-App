@@ -8,12 +8,16 @@ import { MdClose, MdMenu, MdPublic } from "react-icons/md";
 import Link from "next/link";
 import Menu from "../menu/Menu";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
 
 const Navbar = ({ openModal }) => {
   const [mounted, setMounted] = useState(false);
   const [menuIsOpen, setMenuIsOpen] = useState(false);
 
   const pathname = usePathname();
+
+  const { data: session } = useSession();
+  console.log(session);
 
   useEffect(() => {
     setMounted(true);
@@ -45,10 +49,13 @@ const Navbar = ({ openModal }) => {
             <MdPublic size={20} />
           </div>
         </div>
-        <Link href="/dashboard/profile" className="hidden sm:block text-textSoft">
+        <Link
+          href="/dashboard/profile"
+          className="hidden sm:block text-textSoft"
+        >
           <h6 className="text-xs font-semibold font-league">Welcome back</h6>
           <span className="block text-sm font-light font-league -mt-1 tracking-wide">
-            thejouRney
+            {session?.user?.email}
           </span>
         </Link>
 

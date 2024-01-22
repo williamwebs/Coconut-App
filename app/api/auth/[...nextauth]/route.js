@@ -11,9 +11,9 @@ export const authOptions = {
   adapter: MongoDBAdapter(clientPromise),
   session: {
     strategy: "jwt",
-    },
-    pages: {
-      signIn: "/"
+  },
+  pages: {
+    signIn: "/",
   },
   providers: [
     GoogleProvider({
@@ -38,7 +38,10 @@ export const authOptions = {
         );
 
         if (passwordCorrect) {
-          return { id: user._id, email: user.email };
+          return {
+            id: user._id,
+            email: user.email,
+          };
         }
 
         return null;

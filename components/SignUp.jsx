@@ -15,6 +15,7 @@ const SignUp = ({ onSetComponent }) => {
     confirmPassword: "",
   });
   const [loading, setLoading] = useState(false);
+  const [created, setCreated] = useState(false);
 
   const router = useRouter();
 
@@ -65,9 +66,10 @@ const SignUp = ({ onSetComponent }) => {
       console.log(res);
 
       if (res.ok) {
-        router.push("/dashboard");
-        router.refresh();
+        // router.push("/dashboard");
+        // router.refresh();
         console.log("user created!");
+        setCreated(true);
       }
       setLoading(false);
     } catch (error) {
@@ -78,161 +80,181 @@ const SignUp = ({ onSetComponent }) => {
     }
   };
   return (
-    <aside className="sign-up-wrapper w-full">
-      <h2 className="text-3xl text-center font-grotesk font-semibold">
-        Sign Up
-      </h2>
-
-      {/* google and facebook signIn buttons */}
-      <section className="mt-3 mb-2">
-        <GoogleAndFacebookProviders
-          facebookTitle="Sign up with Facebook"
-          googleTitle="Sign up with Google"
-        />
-
-        <div className="w-6 h-6 rounded-full bg-red-400 border border-gray-100 mx-auto flex items-center justify-center mt-2">
-          <span className="text-white text-xs font-semibold font-grotesk">
-            or
-          </span>
-        </div>
-      </section>
-
-      {/* form */}
-      <div className="sign-up-form">
-        <form onSubmit={createUser}>
-          {/* first name */}
-          <div className="w-full relative mt-3">
-            <label
-              htmlFor="firstName"
-              className="block w-full text-sm font-grotesk font-semibold "
-            >
-              First name
-            </label>
-            <input
-              value={user.firstname}
-              name="firstname"
-              onChange={handleFormInputChange}
-              type="text"
-              id="firstname"
-              className="w-full h-9 bg-gray-100 rounded-full px-4 font-grotesk font-regular text-gray-900 outline-none"
-            />
-          </div>
-
-          {/* last name */}
-          <div className="w-full relative mt-3">
-            <label
-              htmlFor="lastName"
-              className="block w-full text-sm font-grotesk font-semibold "
-            >
-              Last name
-            </label>
-            <input
-              value={user.lastname}
-              name="lastname"
-              onChange={handleFormInputChange}
-              type="text"
-              id="lastname"
-              className="w-full h-9 bg-gray-100 rounded-full px-4 font-grotesk font-regular text-gray-900 outline-none"
-            />
-          </div>
-
-          {/* email */}
-          <div className="w-full relative mt-3">
-            <label
-              htmlFor="email"
-              className="block w-full text-sm font-grotesk font-semibold "
-            >
-              Email
-            </label>
-            <input
-              value={user.email}
-              name="email"
-              onChange={handleFormInputChange}
-              type="text"
-              id="email"
-              className="w-full h-9 bg-gray-100 rounded-full px-4 font-grotesk font-regular text-gray-900 outline-none"
-            />
-          </div>
-
-          {/* password */}
-          <div className="w-full mt-3">
-            <label
-              htmlFor="password"
-              className="block w-full text-sm font-grotesk font-semibold "
-            >
-              Password
-            </label>
-
-            <div className="relative">
-              <input
-                value={user.password}
-                name="password"
-                onChange={handleFormInputChange}
-                type={viewPassword ? "text" : "password"}
-                id="password"
-                className="w-full h-9 bg-gray-100 rounded-full px-4 font-grotesk font-regular text-gray-900 outline-none"
-              />
-
-              {viewPassword ? (
-                <IoMdEyeOff
-                  className="absolute top-[50%] right-3 -translate-y-[50%] text-gray-800 cursor-pointer"
-                  onClick={toggleViewPassword}
-                />
-              ) : (
-                <IoMdEye
-                  className="absolute top-[50%] right-3 -translate-y-[50%] text-gray-800 cursor-pointer"
-                  onClick={toggleViewPassword}
-                />
-              )}
-            </div>
-          </div>
-
-          {/* confirm password */}
-          <div className="w-full mt-3">
-            <label
-              htmlFor="password"
-              className="block w-full text-sm font-grotesk font-semibold "
-            >
-              Confirm password
-            </label>
-
-            <div className="relative">
-              <input
-                value={user.confirmPassword}
-                name="confirmPassword"
-                onChange={handleFormInputChange}
-                type={viewPassword ? "text" : "password"}
-                id="confirmPassword"
-                className="w-full h-9 bg-gray-100 rounded-full px-4 font-grotesk font-regular text-gray-900 outline-none"
-              />
-
-              {viewPassword ? (
-                <IoMdEyeOff
-                  className="absolute top-[50%] right-3 -translate-y-[50%] text-gray-800 cursor-pointer"
-                  onClick={toggleViewPassword}
-                />
-              ) : (
-                <IoMdEye
-                  className="absolute top-[50%] right-3 -translate-y-[50%] text-gray-800 cursor-pointer"
-                  onClick={toggleViewPassword}
-                />
-              )}
-            </div>
-          </div>
-
-          <button className="outline_btn w-full mt-3">Sign up</button>
-        </form>
-
-        <div className="flex items-center justify-between mt-5">
-          <p className="text-sm font-grotesk font-medium">
-            Already have an account?
+    <>
+      {created ? (
+        <aside className="sign-up-wrapper w-full">
+          <h2 className="text-2xl text-center font-grotesk font-semibold">
+            Account Created!
+          </h2>
+          <p className="text-sm font-grotesk font-light mt-2">
+            proceed to sign in by clicking the button below.
           </p>
-          <button onClick={handleSignIn} className="outline_btn">
-            {loading ? "Creating user..." : "Sign up"}
-          </button>
-        </div>
-      </div>
-    </aside>
+          <div className="mt-5">
+            <button onClick={handleSignIn} className="outline_btn mx-auto">
+              Sign in
+            </button>
+          </div>
+        </aside>
+      ) : (
+        <aside className="sign-up-wrapper w-full">
+          <h2 className="text-3xl text-center font-grotesk font-semibold">
+            Sign Up
+          </h2>
+
+          {/* google and facebook signIn buttons */}
+          <section className="mt-3 mb-2">
+            <GoogleAndFacebookProviders
+              facebookTitle="Sign up with Facebook"
+              googleTitle="Sign up with Google"
+            />
+
+            <div className="w-6 h-6 rounded-full bg-red-400 border border-gray-100 mx-auto flex items-center justify-center mt-2">
+              <span className="text-white text-xs font-semibold font-grotesk">
+                or
+              </span>
+            </div>
+          </section>
+
+          {/* form */}
+          <div className="sign-up-form">
+            <form onSubmit={createUser}>
+              {/* first name */}
+              <div className="w-full relative mt-3">
+                <label
+                  htmlFor="firstName"
+                  className="block w-full text-sm font-grotesk font-semibold "
+                >
+                  First name
+                </label>
+                <input
+                  value={user.firstname}
+                  name="firstname"
+                  onChange={handleFormInputChange}
+                  type="text"
+                  id="firstname"
+                  className="w-full h-9 bg-gray-100 rounded-full px-4 font-grotesk font-regular text-gray-900 outline-none"
+                />
+              </div>
+
+              {/* last name */}
+              <div className="w-full relative mt-3">
+                <label
+                  htmlFor="lastName"
+                  className="block w-full text-sm font-grotesk font-semibold "
+                >
+                  Last name
+                </label>
+                <input
+                  value={user.lastname}
+                  name="lastname"
+                  onChange={handleFormInputChange}
+                  type="text"
+                  id="lastname"
+                  className="w-full h-9 bg-gray-100 rounded-full px-4 font-grotesk font-regular text-gray-900 outline-none"
+                />
+              </div>
+
+              {/* email */}
+              <div className="w-full relative mt-3">
+                <label
+                  htmlFor="email"
+                  className="block w-full text-sm font-grotesk font-semibold "
+                >
+                  Email
+                </label>
+                <input
+                  value={user.email}
+                  name="email"
+                  onChange={handleFormInputChange}
+                  type="text"
+                  id="email"
+                  className="w-full h-9 bg-gray-100 rounded-full px-4 font-grotesk font-regular text-gray-900 outline-none"
+                />
+              </div>
+
+              {/* password */}
+              <div className="w-full mt-3">
+                <label
+                  htmlFor="password"
+                  className="block w-full text-sm font-grotesk font-semibold "
+                >
+                  Password
+                </label>
+
+                <div className="relative">
+                  <input
+                    value={user.password}
+                    name="password"
+                    onChange={handleFormInputChange}
+                    type={viewPassword ? "text" : "password"}
+                    id="password"
+                    className="w-full h-9 bg-gray-100 rounded-full px-4 font-grotesk font-regular text-gray-900 outline-none"
+                  />
+
+                  {viewPassword ? (
+                    <IoMdEyeOff
+                      className="absolute top-[50%] right-3 -translate-y-[50%] text-gray-800 cursor-pointer"
+                      onClick={toggleViewPassword}
+                    />
+                  ) : (
+                    <IoMdEye
+                      className="absolute top-[50%] right-3 -translate-y-[50%] text-gray-800 cursor-pointer"
+                      onClick={toggleViewPassword}
+                    />
+                  )}
+                </div>
+              </div>
+
+              {/* confirm password */}
+              <div className="w-full mt-3">
+                <label
+                  htmlFor="password"
+                  className="block w-full text-sm font-grotesk font-semibold "
+                >
+                  Confirm password
+                </label>
+
+                <div className="relative">
+                  <input
+                    value={user.confirmPassword}
+                    name="confirmPassword"
+                    onChange={handleFormInputChange}
+                    type={viewPassword ? "text" : "password"}
+                    id="confirmPassword"
+                    className="w-full h-9 bg-gray-100 rounded-full px-4 font-grotesk font-regular text-gray-900 outline-none"
+                  />
+
+                  {viewPassword ? (
+                    <IoMdEyeOff
+                      className="absolute top-[50%] right-3 -translate-y-[50%] text-gray-800 cursor-pointer"
+                      onClick={toggleViewPassword}
+                    />
+                  ) : (
+                    <IoMdEye
+                      className="absolute top-[50%] right-3 -translate-y-[50%] text-gray-800 cursor-pointer"
+                      onClick={toggleViewPassword}
+                    />
+                  )}
+                </div>
+              </div>
+
+              <button className="outline_btn w-full mt-3">
+                {loading ? "Creating user..." : "Sign up"}
+              </button>
+            </form>
+
+            <div className="flex items-center justify-between mt-5">
+              <p className="text-sm font-grotesk font-medium">
+                Already have an account?
+              </p>
+              <button onClick={handleSignIn} className="outline_btn">
+                Sign in
+              </button>
+            </div>
+          </div>
+        </aside>
+      )}
+    </>
   );
 };
 
