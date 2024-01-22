@@ -9,9 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@auth/mongodb-adapter": "^2.0.12",
+    "bcrypt": "^5.1.1",
+    "keen-slider": "^6.8.6",
+    "mongodb": "^6.3.0",
+    "mongoose": "^8.0.4",
+    "next": "14.0.2",
+    "next-auth": "^4.24.5",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.0.2"
+    "react-icons": "^4.12.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",

@@ -1,0 +1,11 @@
+.container {
+  @apply hidden sm:block bg-white/20 h-[96%] rounded-3xl ml-6 p-4 border transition-all duration-500 border-transparent backdrop-blur sticky
+}
+
+.logo_container {
+  @apply flex items-center gap-1;
+}
+
+.logo_text {
+  @apply max-sm:hidden font-semibold font-league text-2xl text-white tracking-wide;
+}

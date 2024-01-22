@@ -1,0 +1,7 @@
+.label {
+  @apply block font-semibold text-sm text-textSoft mb-2;
+}
+
+.inputField {
+  @apply bg-transparent text-textSoft font-league w-full h-[40px] px-2 rounded-sm outline-none border border-gray-700;
+}

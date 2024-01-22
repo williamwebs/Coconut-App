@@ -1,0 +1,15 @@
+.label {
+  @apply block font-semibold text-sm text-gray-900 mb-1;
+}
+
+.inputField {
+  @apply bg-transparent text-gray-950 font-league w-full h-[35px] px-2 rounded-sm outline-none border border-gray-700;
+}
+
+.imageField {
+  @apply bg-transparent text-gray-950 font-league text-sm w-full h-[30px] pr-2 outline-none overflow-hidden;
+}
+
+.textArea {
+  @apply bg-transparent text-gray-950 font-league w-full h-[50px] px-2 rounded-sm outline-none border border-gray-700 resize-none;
+}

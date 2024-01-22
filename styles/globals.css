@@ -1,0 +1,146 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.cdnfonts.com/css/cabinet-grotesk");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* https://github.com/EseCurtis/streek.git */
+/* font-family: 'League Spartan', sans-serif; */
+
+.main {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12rem 2.4rem 16rem 2.4rem;
+  pointer-events: none;
+  background: black;
+}
+
+.gradient {
+  width: 15%;
+  height: 30%;
+  position: absolute;
+  filter: blur(150px) saturate(150%);
+  top: 6rem;
+  left: 3rem;
+  background: #0066cc;
+}
+
+.gradient-2 {
+  width: 10%;
+  height: 20%;
+  position: absolute;
+  filter: blur(150px) saturate(500%);
+  bottom: 0rem;
+  right: 3rem;
+  background-color: #0066cc;
+}
+
+@media screen and (max-width: 640px) {
+  .main {
+    padding: 0;
+  }
+}
+
+/* tailwind styles */
+.app {
+  @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
+}
+
+.primary_btn {
+  @apply rounded-full border border-black bg-black py-1.5 px-5 font-grotesk text-white transition-all hover:bg-white hover:text-black text-center text-sm flex items-center justify-center;
+}
+
+.outline_btn {
+  @apply rounded-full border border-black bg-transparent py-1.5 px-5 font-grotesk text-black transition-all hover:bg-black hover:text-white text-center text-sm flex items-center justify-center;
+}
+
+.secondary_btn {
+  @apply rounded-full border border-black bg-white py-1.5 px-5 font-grotesk text-black transition-all hover:bg-transparent hover:text-white hover:border-white text-center text-sm flex items-center justify-center;
+}
+
+.orange_gradient {
+  @apply bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent;
+}
+
+.blue_gradient {
+  @apply bg-gradient-to-r from-blue-700 via-orange-700 to-cyan-400 bg-clip-text text-transparent;
+}
+
+.head_text {
+  @apply mt-5 text-5xl font-extrabold leading-[1.15] font-grotesk text-white sm:text-6xl;
+}
+
+.desc {
+  @apply mt-5 text-lg text-[#e6e6e6] font-grotesk sm:text-xl max-w-xl;
+}
+
+.glassmorphism {
+  @apply rounded-xl border border-gray-200 bg-white/20 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur p-5;
+}
+
+.modal_glassmorphism {
+  @apply rounded-xl bg-white/30 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur p-5;
+}
+
+.navigation_bg {
+  @apply rounded-xl bg-white/50 w-full mb-24 mt-4 p-2 px-4 sticky top-[0.5rem] backdrop-blur;
+}
+
+.flex_center {
+  @apply flex items-center justify-center;
+}
+
+.flex_between {
+  @apply flex items-center justify-between;
+}
+
+.flex_start {
+  @apply flex items-center justify-start;
+}
+
+.flex_end {
+  @apply flex items-center justify-end;
+}
+
+/* Nav Component */
+.logo_text {
+  @apply max-sm:hidden font-semibold font-league text-2xl text-black tracking-wide;
+}
+
+.dropdown {
+  @apply absolute right-0 top-full mt-3 w-full p-5 rounded-lg bg-white min-w-[210px] flex flex-col gap-2 justify-end items-end;
+}
+
+.dropdown_link {
+  @apply text-sm  text-gray-700 hover:text-gray-500 font-medium;
+}
+
+.plus-icon {
+  @apply absolute bottom-1 right-1 sm:bottom-3 sm:right-3 rounded-full border border-gray-800 w-7 h-7 flex items-center justify-center cursor-pointer;
+}
+
+/* modal */
+.modal_backdrop {
+  @apply w-full h-full backdrop-blur absolute top-0 left-0 right-0 bottom-0 flex justify-center z-20;
+}
+
+.modal_light {
+  @apply max-w-md w-full h-fit mx-5 sm:mx-0 p-6 sm:p-10 rounded-xl bg-white backdrop-blur my-28 relative flex items-center;
+}
+
+.modal_dark {
+  @apply max-w-md w-full h-fit mx-5 sm:mx-0 p-6 sm:p-10 rounded-xl bg-gray-900 backdrop-blur my-28 relative flex items-center;
+}
+
+.modal_close-btn {
+  @apply absolute right-3 top-3 w-6 h-8 hover:rotate-90 flex items-center justify-center rounded-full border border-black cursor-pointer transition delay-300;
+}
+
+.sss {
+  border: 1px solid red;
+}

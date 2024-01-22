@@ -1,0 +1,15 @@
+.container {
+  @apply w-full bg-white/20 backdrop-blur p-4 rounded-2xl flex items-center ;
+}
+
+.title {
+  @apply text-textSoft text-base capitalize font-semibold;
+}
+
+.icons {
+  @apply flex-1 justify-end mr-2 flex items-center gap-2 text-textSoft;
+}
+
+.icon {
+  @apply bg-dashboardBgSoft rounded-full flex items-center justify-center p-1 cursor-pointer relative;
+}
