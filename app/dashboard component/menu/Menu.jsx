@@ -7,7 +7,7 @@ import { MdLogout } from "react-icons/md";
 
 const Menu = ({ toggle }) => {
   const session = useSession();
-  console.log(session);
+
   return (
     <div>
       <div className="my-5 font-grotesk text-textSoft font-medium">
@@ -29,7 +29,10 @@ const Menu = ({ toggle }) => {
         ))}
 
         {/* logout */}
-        <div className="absolute bottom-2 left-7 sm:left-6 cursor-pointer flex items-center gap-3 sm:gap-5">
+        <div
+          onClick={() => signOut()}
+          className="absolute bottom-2 left-7 sm:left-6 cursor-pointer flex items-center gap-3 sm:gap-5"
+        >
           <div>
             <MdLogout className="text-[1.3rem]" />
           </div>
@@ -37,7 +40,6 @@ const Menu = ({ toggle }) => {
             className={`${
               toggle ? "opacity-0 delay-300" : "block"
             } text-[1rem]`}
-            onClick={() => signOut()}
           >
             Log out
           </div>

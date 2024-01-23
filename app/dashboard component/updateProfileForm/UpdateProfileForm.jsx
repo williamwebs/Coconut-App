@@ -1,6 +1,21 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import styles from "./updateProfile.module.css";
 
 const UpdateProfile = () => {
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const response = await fetch("/api/profile");
+      const data = await response.json();
+      setUser(data);
+    };
+
+    fetchUser();
+  }, []);
+
   return (
     <div className="font-league">
       <form>

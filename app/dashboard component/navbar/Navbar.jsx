@@ -17,7 +17,6 @@ const Navbar = ({ openModal }) => {
   const pathname = usePathname();
 
   const { data: session } = useSession();
-  console.log(session);
 
   useEffect(() => {
     setMounted(true);

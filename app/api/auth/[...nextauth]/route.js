@@ -8,7 +8,7 @@ import User from "@/models/user";
 import { connectToDB } from "@/utils/database";
 
 export const authOptions = {
-  adapter: MongoDBAdapter(clientPromise),
+  // adapter: MongoDBAdapter(clientPromise),
   session: {
     strategy: "jwt",
   },
@@ -38,10 +38,11 @@ export const authOptions = {
         );
 
         if (passwordCorrect) {
-          return {
-            id: user._id,
-            email: user.email,
-          };
+          return user;
+          // return {
+          //   id: user._id,
+          //   email: user.email,
+          // };
         }
 
         return null;
