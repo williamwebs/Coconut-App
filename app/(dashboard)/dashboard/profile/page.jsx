@@ -1,8 +1,34 @@
-import { MdOutlinePersonAdd, MdPersonAdd } from "react-icons/md";
+"use client";
+
+import { MdOutlinePersonAdd } from "react-icons/md";
 import styles from "./profile.module.css";
 import UpdateProfile from "@/app/dashboard component/updateProfileForm/UpdateProfileForm";
+import { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
 
 const Profile = () => {
+  const [user, setUser] = useState();
+
+  const { data: session } = useSession();
+
+  const fetchUserDetails = async () => {
+    try {
+      const response = await fetch(`/api/profile?email=${session.user?.email}`);
+
+      if (response.ok) {
+        const data = await response.json();
+        setUser(data);
+        console.log(user);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchUserDetails();
+  }, []);
+
   return (
     <div className={styles.container}>
       <aside className={styles.profilePicture}>
@@ -13,9 +39,8 @@ const Profile = () => {
           </span>
         </div>
       </aside>
-      <aside className={styles.profileContent}>
-        <UpdateProfile />
-      </aside>
+      <div></div>
+      <aside className={styles.profileContent}>{/* <UpdateProfile /> */}</aside>
     </div>
   );
 };

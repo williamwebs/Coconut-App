@@ -2,19 +2,43 @@
 
 import { useEffect, useState } from "react";
 import styles from "./updateProfile.module.css";
+import { useSession } from "next-auth/react";
 
 const UpdateProfile = () => {
   const [user, setUser] = useState({});
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      const response = await fetch("/api/profile");
-      const data = await response.json();
-      setUser(data);
-    };
+  const { data: session } = useSession();
 
-    fetchUser();
+  const fetchUserDetails = async () => {
+    try {
+      const response = await fetch(`/api/profile?email=${session.user?.email}`);
+
+      if (response) {
+        console.log(response);
+      } else {
+        console.log(response);
+      }
+      // const data = await response.json();
+
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchUserDetails();
   }, []);
+
+  // useEffect(() => {
+  //   const fetchUser = async () => {
+  //     const response = await fetch("/api/profile");
+  //     const data = await response.json();
+  //     setUser(data);
+  //   };
+
+  //   fetchUser();
+  // }, []);
 
   return (
     <div className="font-league">

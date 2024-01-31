@@ -69,31 +69,31 @@ const Navbar = ({ openModal }) => {
       </div>
 
       {/* mobile menu */}
-      {menuIsOpen && (
-        <section
-          className={`${
-            menuIsOpen ? "left-[120px]" : "left-[400px]"
-          } sm:hidden absolute top-20 min-w-[250px] p-5 py-8 bg-dashboardBgSoft rounded-md transition-all duration-1000`}
-        >
-          <div className="">
-            <Image
-              src="/assets/images/logo.png"
-              width="40"
-              height="40"
-              alt=""
-              className="bg-black rounded-full"
-            />
-            <p className="font-semibold font-league text-xl text-white tracking-wide">
-              coconut.
-            </p>
-          </div>
+      {/* {menuIsOpen && ( */}
+      <section
+        className={`${
+          menuIsOpen ? "mr-0" : "-mr-80"
+        } sm:hidden absolute top-20 right-0 min-w-[250px] p-5 py-8 bg-dashboardBgSoft rounded-md transition-all duration-1000`}
+      >
+        <div className="">
+          <Image
+            src="/assets/images/logo.png"
+            width="40"
+            height="40"
+            alt=""
+            className="bg-black rounded-full"
+          />
+          <p className="font-semibold font-league text-xl text-white tracking-wide">
+            coconut.
+          </p>
+        </div>
 
-          {/* menu */}
-          <div className="menu">
-            <Menu />
-          </div>
-        </section>
-      )}
+        {/* menu */}
+        <div className="menu">
+          <Menu setMenuIsOpen={setMenuIsOpen} />
+        </div>
+      </section>
+      {/* )} */}
     </>
   );
 };

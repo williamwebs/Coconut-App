@@ -5,14 +5,21 @@ import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { MdLogout } from "react-icons/md";
 
-const Menu = ({ toggle }) => {
+const Menu = ({ toggle, setMenuIsOpen }) => {
   const session = useSession();
+
+  console.log(session);
+
+  const closeMenu = () => {
+    setMenuIsOpen(false);
+  };
 
   return (
     <div>
       <div className="my-5 font-grotesk text-textSoft font-medium">
         {menuLists.map((i) => (
           <Link
+            onClick={closeMenu}
             href={i.path}
             className="flex items-center gap-3 sm:gap-5 py-1 px-2 rounded-md bg-transparent hover:bg-dashboardBgSoft transition-all duration-500 mb-2 sm:mb-4"
             key={i.heading}
