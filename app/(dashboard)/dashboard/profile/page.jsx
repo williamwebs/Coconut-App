@@ -40,7 +40,9 @@ const Profile = () => {
         </div>
       </aside>
       <div></div>
-      <aside className={styles.profileContent}>{/* <UpdateProfile /> */}</aside>
+      <aside className={styles.profileContent}>
+        <UpdateProfile />
+      </aside>
     </div>
   );
 };
