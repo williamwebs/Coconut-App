@@ -13,6 +13,9 @@ pnpm dev
 # or
 bun dev
 ```
+## Deployment Link
+
+Click to open the live development deployment link [coconut-app](https://coconut-app.vercel.app/) with your browser.
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
